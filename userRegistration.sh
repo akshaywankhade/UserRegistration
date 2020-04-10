@@ -1,16 +1,17 @@
 #!/bin/bash -x
 
-#TAKING INPUT
+#TAKING INPUTS
 read -p "Enter First Name :  " firstName
+read -p "Enter Last Name : " lastName
 
-patternFirstName="^([A-Z][a-z]{1,10})$"
+function checkName(){
+	patternName="^([A-Z][a-z]{1,10})$"
+	if [[ $1 =~ $patternName ]] && [[ $2 =~ $patternName ]]
+	then
+		echo "Valid is First and Last Name"
+	else
+		echo "Invalid is First and Last Name "
+	fi
+}
 
-if [[ $firstName =~ $patternFirstName ]]
-then
-	echo "Valid"
-else
-	echo "Invalid"
-fi
-
-
-
+checkName $firstName $lastName

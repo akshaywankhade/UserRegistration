@@ -6,28 +6,29 @@ read -p "Enter Last Name : " lastName
 read -p "Enter Email Id : " email
 read -p "Enter Mobile Number : " mobileNumber
 read -p "Enter Password : " password
- 
+
 #FUNCTION TO VALIDATE NAME
 function checkName(){
-	patternName="^([A-Z][a-z]{1,10})$"
+	patternName="([A-Z]{1}[a-z]{2})"
 	if [[ $firstName =~ $patternName ]] && [[ $lastName =~ $patternName ]]
 	then
-		echo "Valid is First and Last Name"
+		echo "Valid Name"
 	else
-		echo "Invalid is First and Last Name"
+		echo "Invalid Name"
 	fi
 }
 
 #FUNCTION TO VALIDATE EMAIL ID
 function checkEmail(){
-	patternEmail="^abc((\.[A-Z]+[a-z]*[0-9]*)|(\.[A-Z]*[a-z]+[0-9]*)|(\.[A-Z]*[a-z]*[0-9]+)|^)?@bl\.co(\.[a-z]+){1,}$"
-	if [[ $email =~ $patternEmai ]]
+	patternEmail="abc((\.[A-Z]+[a-z]*[0-9]*)|(\.[A-Z]*[a-z]+[0-9]*)|(\.[A-Z]*[a-z]*[0-9]+)|^)?@bl\.co(\.[a-z]+){1,}"
+	if [[ $email =~ $patternEmail ]]
 	then
-		echo "Valid is Email Id"
+		echo "Valid Email Id"
 	else
-		echo "Invalid is Email Id"
+		echo "Invalid Email Id"
 	fi
 }
+
 #FUNCTION TO VALIDATE MOBILE NUMBER
 function checkMobileNumber(){
 	patternMobileNumber="^([0-9]{2}[ ]{1}[0-9]{10})$"
@@ -38,9 +39,10 @@ function checkMobileNumber(){
 		echo "Invalid Mobile Number"
 	fi
 }
+
 #FUNCTION TO VALIDATE PASSWORD
 function checkPassword(){
-	patternPassword="^[a-zA-Z0-9]*(.*[A-Z].*{1}+)*(.*[0-9].*{1}+)*(.*[!@#$%^&*=+].*{1}+)*[a-zA-Z0-9]{5,}$"
+	patternPassword="\w*(.*[A-Z]+)*(.*[0-9]+)*(.*[\!\@\#\$\%\^\&\*\=\+]+)*\w{5,}"
 	if [[ $password =~ $patternPassword ]]
 	then
 		echo "Valid Password"
@@ -49,7 +51,8 @@ function checkPassword(){
 	fi
 }
 
+#INVOKING FUNCTIONS
 checkName $firstName $lastName
-checkEmail $email
+checkEmail "$email"
 checkMobileNumber "$mobileNumber"
 checkPassword "$password"

@@ -40,7 +40,7 @@ function checkMobileNumber(){
 }
 #FUNCTION TO VALIDATE PASSWORD
 function checkPassword(){
-	patternPassword="^[A-Za-z0-9]{8,}$"
+	patternPassword="^(.*[A-Z])+(\w){7,}$"
 	if [[ $1 =~ $patternPassword ]]
 	then
 		echo "Valid Password"
